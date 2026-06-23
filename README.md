@@ -2,32 +2,66 @@
 
 [Google Engineering Practices](https://google.github.io/eng-practices/) に準拠した Claude Code 用スキル集。
 
-コードレビュー文化（The Code Reviewer's Guide / The Change Author's Guide）の原則に沿って、レビュー・作業分割・PR 文面作成を支援します。すべてのスキルは原文（`_eng-practices-reference/`）を正典（source of truth）として参照します。
-
-## スキル一覧
-
-| スキル | 役割 | 準拠する原文ページ |
-| --- | --- | --- |
-| [`eng-review`](./eng-review/SKILL.md) | git diff / ブランチ差分 / コミットを Design・Functionality・Complexity・Tests・Naming・Comments・Style・Documentation の 8 観点でレビューし、礼儀正しく重要度ラベル（Nit / Optional / FYI）付きのレビューコメント文面まで生成する | The Standard of Code Review / What to look for / Navigating a CL / How to write code review comments / Speed |
-| [`eng-split`](./eng-split/SKILL.md) | 要件や大きな作業を「one self-contained change」に分解。水平分割（レイヤー単位）・垂直分割（機能単位）・リファクタリングの分離・ビルドを壊さないマージ順序を含む分割計画を出力する | Small CLs |
-| [`eng-pr`](./eng-pr/SKILL.md) | 変更差分から CL 説明文 / PR タイトル・本文を生成する。1 行目は命令文の自己完結した要約、本文は why と文脈（問題・選んだ理由・欠点・背景情報） | Writing good CL descriptions |
-
-## リファレンス（正典）
-
-- [`_eng-practices-reference/google-eng-practices-verbatim.md`](./_eng-practices-reference/google-eng-practices-verbatim.md)
-  - <https://google.github.io/eng-practices/> の内容を、要約・改変を加えず元の Markdown ソース（<https://github.com/google/eng-practices>）からそのまま書き起こしたもの。
-  - 各スキルは実行時にこのファイルの該当セクションを参照し、記憶や一般論ではなく原文の記述を判断根拠とする。
+このリポジトリは Claude Code の **プラグイン・マーケットプレイス**として構成されており、コマンド一発でインストールできます。
 
 ## インストール
 
-各スキルディレクトリを Claude Code のスキル置き場（例: `~/.claude/skills/`）に配置します。
+Claude Code 上で次を実行します。
 
-```sh
-git clone git@github.com:mr04vv/skills.git
-cp -r skills/eng-review skills/eng-split skills/eng-pr skills/_eng-practices-reference ~/.claude/skills/
+```text
+/plugin marketplace add mr04vv/skills
+/plugin install eng-practices@mr04vv-skills
+/reload-plugins
 ```
 
-スキルは名前（`/eng-review` 等）か、説明文のトリガー語（「Google 流レビューして」「要件を分解して」「PR 概要を作って」等）で起動します。
+- 1 行目でこのリポジトリをマーケットプレイスとして登録します（初回のみ）。
+- 2 行目で `eng-practices` プラグイン（3 スキル + 正典）をインストールします。
+- 別のマシンでも、同じ 2 コマンドで導入できます。
+
+更新・管理:
+
+```text
+/plugin marketplace update mr04vv-skills    # マーケットプレイス定義の更新
+/plugin list                                 # インストール済み一覧
+/plugin uninstall eng-practices@mr04vv-skills
+```
+
+インストール後、各スキルは **プラグイン名前空間付き**で呼び出せます（例: `/eng-practices:eng-review`）。説明文のトリガー語（「Google 流レビューして」「要件を分解して」「PR 概要を作って」等）でも起動します。
+
+## 収録プラグインとスキル
+
+### `eng-practices` プラグイン
+
+| スキル | 役割 | 準拠する原文ページ |
+| --- | --- | --- |
+| `eng-review` | git diff / ブランチ差分 / コミットを Design・Functionality・Complexity・Tests・Naming・Comments・Style・Documentation の 8 観点でレビューし、礼儀正しく重要度ラベル（Nit / Optional / FYI）付きのレビューコメント文面まで生成する | The Standard of Code Review / What to look for / Navigating a CL / How to write code review comments / Speed |
+| `eng-split` | 要件や大きな作業を「one self-contained change」に分解。水平分割（レイヤー単位）・垂直分割（機能単位）・リファクタリングの分離・ビルドを壊さないマージ順序を含む分割計画を出力する | Small CLs |
+| `eng-pr` | 変更差分から CL 説明文 / PR タイトル・本文を生成する。1 行目は命令文の自己完結した要約、本文は why と文脈（問題・選んだ理由・欠点・背景情報） | Writing good CL descriptions |
+
+すべてのスキルは、同梱の正典 `plugins/eng-practices/reference/google-eng-practices-verbatim.md` を `${CLAUDE_PLUGIN_ROOT}` 経由で参照し、記憶や一般論ではなく**原文の記述を判断根拠**とします。
+
+## リポジトリ構成
+
+```text
+.
+├── .claude-plugin/
+│   └── marketplace.json              # マーケットプレイス定義（mr04vv-skills）
+├── plugins/
+│   └── eng-practices/
+│       ├── .claude-plugin/
+│       │   └── plugin.json           # プラグイン定義
+│       ├── skills/
+│       │   ├── eng-review/SKILL.md
+│       │   ├── eng-split/SKILL.md
+│       │   └── eng-pr/SKILL.md
+│       └── reference/
+│           └── google-eng-practices-verbatim.md   # 正典（原文の書き起こし）
+└── README.md
+```
+
+## 正典について
+
+`plugins/eng-practices/reference/google-eng-practices-verbatim.md` は、<https://google.github.io/eng-practices/> の内容を、要約・改変を加えず元の Markdown ソース（<https://github.com/google/eng-practices>）からそのまま書き起こしたものです。
 
 ## 実行範囲
 
@@ -36,4 +70,4 @@ cp -r skills/eng-review skills/eng-split skills/eng-pr skills/_eng-practices-ref
 
 ## ライセンス
 
-`_eng-practices-reference/` 内の文書は Google Engineering Practices の原文であり、[CC-By 3.0 License](https://creativecommons.org/licenses/by/3.0/) の下にあります。
+`reference/` 内の文書は Google Engineering Practices の原文であり、[CC-BY 3.0 License](https://creativecommons.org/licenses/by/3.0/) の下にあります。

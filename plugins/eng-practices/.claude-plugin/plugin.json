@@ -1,0 +1,20 @@
+{
+  "name": "eng-practices",
+  "displayName": "Google Engineering Practices",
+  "version": "0.1.0",
+  "description": "Google Engineering Practices（コードレビューガイドライン）に準拠した3つのスキル: eng-review（8観点でのレビューと重要度ラベル付きコメント生成）、eng-split（要件・大きな作業の self-contained CL への分解計画）、eng-pr（差分からの CL 説明文 / PR 概要の生成）。全スキルは同梱の原文（reference/google-eng-practices-verbatim.md）を正典として参照する。",
+  "author": {
+    "name": "mr04vv",
+    "url": "https://github.com/mr04vv"
+  },
+  "homepage": "https://github.com/mr04vv/skills",
+  "repository": "https://github.com/mr04vv/skills",
+  "license": "CC-BY-3.0",
+  "keywords": [
+    "code-review",
+    "google-eng-practices",
+    "pull-request",
+    "cl-description",
+    "task-split"
+  ]
+}

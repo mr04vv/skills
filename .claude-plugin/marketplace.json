@@ -1,0 +1,22 @@
+{
+  "name": "mr04vv-skills",
+  "description": "mr04vv の Claude Code スキル / プラグイン集",
+  "version": "0.1.0",
+  "owner": {
+    "name": "mr04vv",
+    "url": "https://github.com/mr04vv"
+  },
+  "plugins": [
+    {
+      "name": "eng-practices",
+      "source": "./plugins/eng-practices",
+      "description": "Google Engineering Practices に準拠したコードレビュー / 作業分割 / PR 作成スキル群",
+      "category": "development",
+      "keywords": [
+        "code-review",
+        "google-eng-practices",
+        "pull-request"
+      ]
+    }
+  ]
+}

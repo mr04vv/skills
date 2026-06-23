@@ -1,6 +1,6 @@
 ---
 name: eng-split
-description: Google Engineering Practices の「Small CLs」に厳密に準拠して、要件や大きな作業を小さく自己完結した複数の CL（変更単位）に分解・計画するスキル。水平分割（レイヤー単位）・垂直分割（機能単位）・リファクタリングの分離を提案し、依存関係とマージ順序（ビルドを壊さない）を含む分割計画を出力する。トリガー: 「eng-split」「要件を分解」「タスク分割」「小さいCLに分けて」「作業を分割して」。
+description: "Google Engineering Practices の「Small CLs」に厳密に準拠して、要件や大きな作業を小さく自己完結した複数の CL（変更単位）に分解・計画するスキル。水平分割（レイヤー単位）・垂直分割（機能単位）・リファクタリングの分離を提案し、依存関係とマージ順序（ビルドを壊さない）を含む分割計画を出力する。トリガー: 「eng-split」「要件を分解」「タスク分割」「小さいCLに分けて」「作業を分割して」。"
 ---
 
 # eng-split — Google Engineering Practices 準拠の作業分割（Small CLs）
@@ -12,8 +12,10 @@ Google の「Small CLs」ガイドラインに**厳密に準拠**して、要件
 分割の判断基準は必ず以下のファイルに従うこと。開始時に**必ず該当セクションを読む**こと。
 
 ```
-~/.claude/skills/_eng-practices-reference/google-eng-practices-verbatim.md
+${CLAUDE_PLUGIN_ROOT}/reference/google-eng-practices-verbatim.md
 ```
+
+> このスキルはプラグイン `eng-practices` に同梱されており、正典はプラグインルート配下の `reference/` にある。`${CLAUDE_PLUGIN_ROOT}` はプラグインのルートディレクトリに解決される環境変数。実行時にこの変数が展開されない場合は、このスキル自身のディレクトリ（`${CLAUDE_SKILL_DIR}`）から見て `../../reference/google-eng-practices-verbatim.md` を参照する。
 
 参照すべき主なセクション（原文の見出し）:
 - `Small CLs` — 全体。特に以下のサブセクション:

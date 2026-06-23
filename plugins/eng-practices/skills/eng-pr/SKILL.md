@@ -1,6 +1,6 @@
 ---
 name: eng-pr
-description: Google Engineering Practices の「Writing good CL descriptions」に厳密に準拠して、変更差分から CL 説明文 / Pull Request の概要（タイトル・本文）を生成するスキル。1行目は命令文の自己完結した要約、本文は why と文脈（問題・選んだ理由・欠点・背景情報）を含める。git diff の読み取りまでを行い、コミット・push・PR 作成は行わず文面生成にとどめる（実行はユーザー確認後）。トリガー: 「eng-pr」「PR概要を作って」「CL説明文を書いて」「PRの説明を書いて」「コミットメッセージを書いて（Google基準で）」。
+description: "Google Engineering Practices の「Writing good CL descriptions」に厳密に準拠して、変更差分から CL 説明文 / Pull Request の概要（タイトル・本文）を生成するスキル。1行目は命令文の自己完結した要約、本文は why と文脈（問題・選んだ理由・欠点・背景情報）を含める。git diff の読み取りまでを行い、コミット・push・PR 作成は行わず文面生成にとどめる（実行はユーザー確認後）。トリガー: 「eng-pr」「PR概要を作って」「CL説明文を書いて」「PRの説明を書いて」「コミットメッセージを書いて（Google基準で）」。"
 ---
 
 # eng-pr — Google Engineering Practices 準拠の CL 説明文 / PR 概要作成
@@ -12,8 +12,10 @@ Google の「Writing good CL descriptions」ガイドラインに**厳密に準�
 文面の判断基準は必ず以下のファイルに従うこと。開始時に**必ず該当セクションを読む**こと。
 
 ```
-~/.claude/skills/_eng-practices-reference/google-eng-practices-verbatim.md
+${CLAUDE_PLUGIN_ROOT}/reference/google-eng-practices-verbatim.md
 ```
+
+> このスキルはプラグイン `eng-practices` に同梱されており、正典はプラグインルート配下の `reference/` にある。`${CLAUDE_PLUGIN_ROOT}` はプラグインのルートディレクトリに解決される環境変数。実行時にこの変数が展開されない場合は、このスキル自身のディレクトリ（`${CLAUDE_SKILL_DIR}`）から見て `../../reference/google-eng-practices-verbatim.md` を参照する。
 
 参照すべき主なセクション（原文の見出し）:
 - `Writing good CL descriptions` — 全体。特に以下のサブセクション:

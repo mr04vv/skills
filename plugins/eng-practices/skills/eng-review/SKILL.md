@@ -1,6 +1,6 @@
 ---
 name: eng-review
-description: Google Engineering Practices（コードレビューガイドライン）に厳密に準拠してコードレビューを行うスキル。未コミット変更・ブランチ差分・特定コミットを Design/Functionality/Complexity/Tests/Naming/Comments/Style/Documentation の観点でレビューし、礼儀正しく重要度ラベル（Nit/Optional/FYI）付きのレビューコメントを生成する。トリガー: 「eng-review」「Google流レビュー」「eng practices でレビュー」「コードレビューして（Google基準で）」。
+description: "Google Engineering Practices（コードレビューガイドライン）に厳密に準拠してコードレビューを行うスキル。未コミット変更・ブランチ差分・特定コミットを Design/Functionality/Complexity/Tests/Naming/Comments/Style/Documentation の観点でレビューし、礼儀正しく重要度ラベル（Nit/Optional/FYI）付きのレビューコメントを生成する。トリガー: 「eng-review」「Google流レビュー」「eng practices でレビュー」「コードレビューして（Google基準で）」。"
 ---
 
 # eng-review — Google Engineering Practices 準拠コードレビュー
@@ -12,8 +12,10 @@ Google の公式 Code Review ガイドライン（The Code Reviewer's Guide）�
 レビューの判断基準は必ず以下のファイルに従うこと。レビュー開始時に**必ず該当セクションを読む**こと。記憶や一般論ではなく、原文の記述を根拠にする。
 
 ```
-~/.claude/skills/_eng-practices-reference/google-eng-practices-verbatim.md
+${CLAUDE_PLUGIN_ROOT}/reference/google-eng-practices-verbatim.md
 ```
+
+> このスキルはプラグイン `eng-practices` に同梱されており、正典はプラグインルート配下の `reference/` にある。`${CLAUDE_PLUGIN_ROOT}` はプラグインのルートディレクトリに解決される環境変数。実行時にこの変数が展開されない場合は、このスキル自身のディレクトリ（`${CLAUDE_SKILL_DIR}`）から見て `../../reference/google-eng-practices-verbatim.md` を参照する。
 
 参照すべき主なセクション（原文の見出し）:
 - `The Standard of Code Review` — レビューの最上位ルールと原則
